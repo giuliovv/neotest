@@ -1,24 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+// import { createClient, createTokenSmartContract } from './neo-one';
+import { ContractsProvider, createClient } from './neo-one';
 
 function App() {
+  const client = createClient();
+  // const token = createTokenSmartContract(client);
+  // console.log(token)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContractsProvider client={client}>
+      {/* <WithContracts>{({ token }) => <div onClick={() => token.withdraw.confirmed()}>Withdraw</div>}</WithContracts> */}
+    </ContractsProvider>
   );
 }
 
